@@ -11,6 +11,11 @@ var SongQueue = Songs.extend({
   },
 
   dequeue: function() {
+    
+  },
+
+  playFirst: function(){
+
   }
 
 });

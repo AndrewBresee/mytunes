@@ -18,7 +18,20 @@ var AppModel = Backbone.Model.extend({
     }, this);
 
     params.library.on('enqueue', function(song){
+      console.log("Queued")
       this.get('songQueue').add(song);
     }, this);
+
+    params.library.on('dequeue', function(){
+      this.get('songQueue')[0].destroy(); 
+    }, this);
+
+    params.library.on('playFirst',function(){
+      console.log("APP MODEL TRIGGER");
+      console.log(this.get('songQueue').models[0].attributes);
+      this.set('currentSong', this.get('songQueue')[0]);
+    }, this);
+
+
   }
 });
