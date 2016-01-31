@@ -19,6 +19,11 @@ var AppModel = Backbone.Model.extend({
 
     params.library.on('enqueue', function(song){
       this.get('songQueue').add(song);
+
+      //should play if no songs are in queue
+      if(this.get('songQueue').length === 1){
+        this.get('songQueue').playFirst();
+      }
     }, this);
 
     params.library.on('dequeue', function(){
